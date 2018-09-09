@@ -8,3 +8,5 @@
 7. NODE_ENV不是内部或外部命令,也不是可运行的程序-------
     解决办法：安装across-env:npm install cross-env --save-dev
     在运行命令加前缀：在NODE_ENV=xxxxxxx前面添加cross-env就可以了。 
+
+8.使用 webpack-dev-server 生成的文件存在内存中，文件件中是没有的
