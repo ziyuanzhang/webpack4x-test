@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "prod": "webpack -p --config webpack.prod.js",
-    "txt": "webpack-dev-server --config webpack.txt.js"
+    "prod": "webpack -p --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",

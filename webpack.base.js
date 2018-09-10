@@ -1,12 +1,11 @@
- const path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /* "prod": "cross-env NODE_ENV=production webpack -p" */
 module.exports = {
     entry:{
-      "app":'./src/app.js',
-      "contact": './src/contact.js'
+      "app":'./src/js/app.js',
+      "contact": './src/js/contact.js'
     }, 
     output: {
       path: path.resolve(__dirname, 'dist')
@@ -22,6 +21,16 @@ module.exports = {
                 outputPath: 'images/'
               }
             }]
+        },
+        {
+          test:/\.(woff|woff2|eot|ttf|otf)$/,
+          use:[{
+            loader: 'file-loader',
+            options:{
+              name:"[name].[ext]",
+              outputPath: 'font/'
+            }
+          }]
         },
         {
           loader: 'image-webpack-loader',
@@ -42,8 +51,8 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'My App',
-        template: './src/index.html',
+        title: 'home',
+        template: './src/html/index.html',
         filename: 'index.html',
         minify:{
           collapseWhitespace: true,
@@ -52,7 +61,8 @@ module.exports = {
         excludeChunks: ['contact']
       }),
       new HtmlWebpackPlugin({
-        template: './src/contact.html',
+        title: 'contact',
+        template: './src/html/contact.html',
         filename: 'contact.html',
         minify: {
           collapseWhitespace: true,
