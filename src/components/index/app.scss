@@ -9,8 +9,8 @@ body{
     }
     @font-face{
         font-family: 'MyFont';
-        src: url('../font/my-font.eot');
-        src:url('../font/my-font.eot?#iefix') format('embedded-opentype'),url('../font/my-font.woff') format('woff'),url('../font/my-font.ttf') format('truetype');
+        src: url('../../assets/font/my-font.eot');
+        src:url('../../assets/font/my-font.eot?#iefix') format('embedded-opentype'),url('../../assets/font/my-font.woff') format('woff'),url('../../assets/font/my-font.ttf') format('truetype');
         font-weight: 600;
         font-style: normal;
     }
@@ -27,7 +27,7 @@ body{
         border: 1px solid #000;
         width: 200px;
         height: 200px;
-        background: url("../images/icon.png");
+        background: url("../../assets/images/icon.png");
         position:relative;
         animation:mymove 5s infinite;
     }

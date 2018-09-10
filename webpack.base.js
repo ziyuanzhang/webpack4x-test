@@ -4,8 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 /* "prod": "cross-env NODE_ENV=production webpack -p" */
 module.exports = {
     entry:{
-      "app":'./src/js/app.js',
-      "contact": './src/js/contact.js'
+      "app":'./src/components/index/app.js',
+      "contact": './src/components/contact/contact.js'
     }, 
     output: {
       path: path.resolve(__dirname, 'dist')
@@ -46,26 +46,32 @@ module.exports = {
               minimize: true
             }
           }],
+        },
+        {
+            test: /\.(ejs)$/,
+            use: {
+                loader: 'ejs-loader',
+            }
         }
       ]
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'home',
-        template: './src/html/index.html',
+        template: './src/components/index/index.html',
         filename: 'index.html',
         minify:{
+          removeComments : true, 
           collapseWhitespace: true,
         },
         hash:process.env.NODE_ENV === 'production',
         excludeChunks: ['contact']
       }),
       new HtmlWebpackPlugin({
-        title: 'contact',
-        template: './src/html/contact.html',
+        template: './src/components/contact/contact.html',
         filename: 'contact.html',
         minify: {
-          collapseWhitespace: true,
+          removeComments : true, //去掉注释
+          collapseWhitespace: true,//去掉空格
         },
         hash: process.env.NODE_ENV === 'production',
         chunks: ['contact']

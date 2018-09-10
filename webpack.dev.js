@@ -17,7 +17,7 @@ module.exports = merge(base,{
       rules:[
         {
           test:/\.scss$/,
-          use:['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
+          use:['style-loader', 'css-loader?sourceMap','postcss-loader', 'sass-loader?sourceMap']
         },
       ]
     },
