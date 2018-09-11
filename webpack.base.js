@@ -74,7 +74,7 @@ module.exports = {
           collapseWhitespace: true,//去掉空格
         },
         hash: process.env.NODE_ENV === 'production',
-        chunks: ['contact']
+        chunks: ['contact','vendors~app~contact']
       }),
       /* 以后要遇到或处理 jQuery 或 $ 都会去自动加载 jquery 这个库 */
       new webpack.ProvidePlugin({
