@@ -68,7 +68,8 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/components/index/index.html',
+        title:'home',
+        template: './src/components/index/index.ejs',
         filename: 'index.html',
         minify:{
           removeComments : true, 
@@ -78,7 +79,8 @@ module.exports = {
         excludeChunks: ['contact']
       }),
       new HtmlWebpackPlugin({
-        template: './src/components/contact/contact.html',
+        title:'contact',
+        template: './src/components/contact/contact.ejs',
         filename: 'contact.html',
         minify: {
           removeComments : true, //去掉注释
