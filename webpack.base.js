@@ -13,7 +13,7 @@ module.exports = {
     module:{
       rules:[
         {
-          test:/\.(gif|png|jpe?g)$/i,
+          test:/\.(gif|png|jpe?g|svg)$/i,
           use:[{
               loader: 'url-loader',
               options:{
@@ -23,7 +23,7 @@ module.exports = {
               }
             }]
         },
-        {
+        /* {
           test: /\.svg$/,
           use: [{
               loader: 'file-loader',
@@ -32,7 +32,7 @@ module.exports = {
                 outputPath: 'images/'
               }
             }]
-        },
+        }, */
         {
           test:/\.(woff|woff2|eot|ttf|otf)$/,
           use:[{
