@@ -13,11 +13,21 @@ module.exports = {
     module:{
       rules:[
         {
-          test:/\.(gif|png|jpe?g|svg)$/i,
+          test:/\.(gif|png|jpe?g)$/i,
           use:[{
               loader: 'url-loader',
               options:{
-                limit: 10000,
+                limit: 10240,
+                name:"[name].[ext]",
+                outputPath: 'images/'
+              }
+            }]
+        },
+        {
+          test: /\.svg$/,
+          use: [{
+              loader: 'file-loader',
+              options:{
                 name:"[name].[ext]",
                 outputPath: 'images/'
               }

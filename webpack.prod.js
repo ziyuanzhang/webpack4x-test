@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const base = require('./webpack.base.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = merge(base,{
@@ -13,11 +13,13 @@ module.exports = merge(base,{
     module:{
       rules:[
         {
-          test:/\.scss$/,
-          use:ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader','postcss-loader', 'sass-loader']
-          })
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+             MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
         }
       ]
     },
@@ -28,9 +30,8 @@ module.exports = merge(base,{
         }
       }),
       new CleanWebpackPlugin(["dist"]),
-      new ExtractTextPlugin({
-        filename:"css/[name].[chunkhash].css",
-        disable:false        
+      new MiniCssExtractPlugin({
+        chunkFilename:'css/[name].[contenthash].css',
       }),
       //修改js，第三方依赖名字不变
       new webpack.HashedModuleIdsPlugin() 
