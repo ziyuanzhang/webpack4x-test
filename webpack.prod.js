@@ -3,6 +3,8 @@ const merge = require('webpack-merge');
 const base = require('./webpack.base.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const glob = require('glob');
+const purifyCssPlugin = require('purifycss-webpack');
 
 module.exports = merge(base,{
     mode:'production',
@@ -34,7 +36,11 @@ module.exports = merge(base,{
         chunkFilename:'css/[name].[contenthash].css',
       }),
       //修改js，第三方依赖名字不变
-      new webpack.HashedModuleIdsPlugin() 
+      new webpack.HashedModuleIdsPlugin(),
+      //删除未用的css
+      new purifyCssPlugin({
+        paths:glob.sync(path.join(__dirname,'src/*.html')),
+    })
     ],
     optimization:{
       //公用的依赖提取出来
