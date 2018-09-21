@@ -6,7 +6,9 @@ module.exports = merge(base,{
     mode:'development',
     devtool: 'inline-source-map',
     output: {
-      filename: 'js/[name].[hash].js'
+      filename: 'js/[name].[hash].js',
+      //解决cmd/amd加载js文件用的
+      chunkFilename:'js/[name].[contenthash].js'
     } ,
     devServer: {
       port: 9000,

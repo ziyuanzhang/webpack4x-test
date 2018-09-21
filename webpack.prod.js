@@ -10,6 +10,8 @@ module.exports = merge(base,{
     mode:'production',
     output: {
       filename: 'js/[name].[contenthash].js',
+      //chunkFilename--解决cmd/amd加载js文件用的
+      chunkFilename:'js/[name].[contenthash].js',
       publicPath:"/"
     } ,
     module:{
